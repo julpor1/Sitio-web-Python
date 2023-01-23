@@ -1,0 +1,24 @@
+{% include 'sitio/header.html'   %}
+<!--bs5-grid-default -->
+    <br>
+    <div class="row">
+        {% for dato in datos %}
+            
+        <div class="col-md-3">
+            <div class="card">
+                <img class="card-img-top" src="/img/{{dato[2]}}" alt="Title">
+                <div class="card-body">
+                    <h4 class="card-title">{{dato[1]}}</h4>
+                    <p class="card-text">
+                        <a name="" id="" class="btn btn-primary" href="{{dato[3]}}" role="button" target="_blank">Descargar</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+    
+
+
+{% include 'sitio/footer.html'  %}

@@ -1,0 +1,75 @@
+{% include 'admin/header.html'   %}
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-header">
+                    Datos del libro
+                </div>
+                <div class="card-body">
+                    <form action="/admin/libros/guardar" method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                          <label for="txtNombre" class="form-label">Nombre del Libro:</label>
+                          <input type="text" name="txtNombre" id="txtNombre" class="form-control" placeholder="Escriba el nombre del libro" aria-describedby="helpId">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="txtImagen" class="form-label">Imagen:</label>
+                            <input type="file" name="txtImagen" id="txtImagen" class="form-control" aria-describedby="helpId">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="txtURL" class="form-label">URL Descarga:</label>
+                            <input type="text" name="txtURL" id="txtURL" class="form-control" aria-describedby="helpId" placeholder="Escriba la URL de descarga">
+                        </div>
+
+                        
+                   
+                </div>
+                <div class="card-footer text-muted">
+                    <button class="btn btn-primary" type="submit">Enviar Informacion</button>
+                </div>
+            </form>
+            </div>
+        </div>
+        <div class="col-md-7">
+             <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Imagen</th>
+                            <th scope="col">URL</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for dato in datos %}
+                        <tr class="">
+                            <td>{{dato[0]}}</td>
+                            <td>{{dato[1]}}</td>
+                            <td>
+                               <img width="60" src="/img/{{dato[2]}}" alt="">
+                            </td>
+                            <td>{{dato[3]}}</td>
+                            <td>
+                                <a onclick="return confirm('¿Estas seguro de eliminar los datos?')" href="/delete/libros/{{dato[0]}}" role="button" class="btn btn-danger">Eliminar</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                      
+                    </tbody>
+                </table>
+             </div>
+             
+        </div>
+        
+    </div>
+</div>
+
+
+
+
+{% include 'admin/footer.html'   %}
